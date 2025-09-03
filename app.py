@@ -204,16 +204,7 @@ with chat_container:
 with chat_body.container():
     for speaker, message in st.session_state.chat_history:
         display_message(speaker, message)
-    # Quick reply buttons for follow-up question
-    if st.session_state.followup_questions:
-        follow_q = st.session_state.followup_questions[0]
-        cols = st.columns(2)
-        if cols[0].button("Yes"):
-            st.session_state.user_input = "Yes"
-            handle_input()
-        if cols[1].button("No"):
-            st.session_state.user_input = "No"
-            handle_input()
+    
 
 # -------------------------------
 # 10. Footer Disclaimer
