@@ -11,8 +11,8 @@ import time
 # 1. FAQ Data
 # -------------------------------
 faq_data = [
-    {"question": "Hi. Hello. How are you? What are you doing?", "answer": "Hello. 😊 You can ask questions about our company and I'll try to help you my level best."},
-    {"question": "Hi. Hello. How are you?", "answer": "Hello. 😊 I'm doing great & thank you. Hope you doing well too. You can ask questions about our company and I'll try to help you my level best."},
+    {"question": "Product info.", "answer": "Hello. 😊 You can ask questions about our company and I'll try to help you my level best."},
+    {"question": "Hi. Hello.", "answer": "Hello. 😊 You can ask questions about our company and I'll try to help you my level best."},
     {"question": "What are your business hours?", "answer": "Our office is open from 9 AM to 6 PM, Monday to Friday."},
     {"question": "What are your office timings?", "answer": "Our office is open from 9 AM to 6 PM, Monday to Friday."},
     {"question": "Where is your office located?", "answer": "Our office is located at 123 Main Street, Bangalore."},
