@@ -65,17 +65,24 @@ faq_embeddings = embed_model.encode(faq_questions, convert_to_tensor=True)
 # 4. Retrieval function (FIXED)
 # -------------------------------
 def retrieve_answer(user_query):
-    # Use only the current user query for embedding matching
     query_embedding = embed_model.encode(user_query, convert_to_tensor=True)
     similarities = util.pytorch_cos_sim(query_embedding, faq_embeddings)
     best_idx = similarities.argmax()
     best_score = similarities[0][best_idx].item()
 
-    if best_score < 0.5:
-        top_idx = similarities[0].topk(1).indices[0].item()
-        suggested_q = faq_questions[top_idx]
+    # If confidence is high enough, return the answer
+    if best_score >= 0.65:   # ⬅️ raised threshold
+        return faq_data[best_idx]['answer'], None
+
+    # If moderately similar, suggest the closest question
+    elif 0.45 <= best_score < 0.65:
+        suggested_q = faq_questions[best_idx]
         return f"⚠️ Sorry, I don't have an exact answer. Did you mean: '{suggested_q}'?", [suggested_q]
-    return faq_data[best_idx]['answer'], None
+
+    # Otherwise, no good match
+    else:
+        return "⚠️ Sorry, I couldn’t find a relevant answer. Please rephrase your question.", None
+
 
 # -------------------------------
 # 5. Main pseudo-company content
