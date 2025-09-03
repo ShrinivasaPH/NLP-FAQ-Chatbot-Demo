@@ -6,9 +6,17 @@ from sentence_transformers import SentenceTransformer, util
 import textwrap
 from datetime import datetime
 import time
-
 # -------------------------------
-# 1. FAQ Data
+# 1. Streamlit UI Setup
+# -------------------------------
+st.set_page_config(
+    page_title="Demo Company Site",
+    page_icon="🏢",
+    layout="wide",
+    initial_sidebar_state="collapsed"
+)
+# -------------------------------
+# 2. FAQ Data
 # -------------------------------
 faq_data = [
     {"question": "Product info.", "answer": "Hello. 😊 You can ask questions about our company and I'll try to help you my level best."},
@@ -35,7 +43,7 @@ faq_data = [
 ]
 
 # -------------------------------
-# 2. Load Sentence-Transformer Model
+# 3. Load Sentence-Transformer Model
 # -------------------------------
 @st.cache_resource
 def load_model():
@@ -46,7 +54,7 @@ faq_questions = [item['question'] for item in faq_data]
 faq_embeddings = embed_model.encode(faq_questions, convert_to_tensor=True)
 
 # -------------------------------
-# 3. Retrieval function
+# 4. Retrieval function
 # -------------------------------
 def retrieve_answer(user_query, prev_question=None):
     query_text = f"{prev_question} {user_query}" if prev_question else user_query
@@ -60,16 +68,6 @@ def retrieve_answer(user_query, prev_question=None):
         suggested_q = faq_questions[top_idx]
         return f"⚠️ Sorry, I don't have an exact answer. Did you mean: '{suggested_q}'?", [suggested_q]
     return faq_data[best_idx]['answer'], None
-
-# -------------------------------
-# 4. Streamlit UI Setup
-# -------------------------------
-st.set_page_config(
-    page_title="Demo Company Site",
-    page_icon="🏢",
-    layout="wide",
-    initial_sidebar_state="collapsed"
-)
 
 # -------------------------------
 # 5. Main pseudo-company content
