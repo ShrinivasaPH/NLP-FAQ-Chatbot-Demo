@@ -11,7 +11,7 @@ import time
 # -------------------------------
 st.set_page_config(
     page_title="AI ChatBot Demo",
-    page_icon="💻",
+    page_icon="🤖",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
@@ -61,11 +61,11 @@ faq_questions = [item['question'] for item in faq_data]
 faq_embeddings = embed_model.encode(faq_questions, convert_to_tensor=True)
 
 # -------------------------------
-# 4. Retrieval function
+# 4. Retrieval function (FIXED)
 # -------------------------------
-def retrieve_answer(user_query, prev_question=None):
-    query_text = f"{prev_question} {user_query}" if prev_question else user_query
-    query_embedding = embed_model.encode(query_text, convert_to_tensor=True)
+def retrieve_answer(user_query):
+    # Use only the current user query for embedding matching
+    query_embedding = embed_model.encode(user_query, convert_to_tensor=True)
     similarities = util.pytorch_cos_sim(query_embedding, faq_embeddings)
     best_idx = similarities.argmax()
     best_score = similarities[0][best_idx].item()
@@ -82,13 +82,13 @@ def retrieve_answer(user_query, prev_question=None):
 st.markdown("<h1>🤖 AI Chatbot Demo </h1>", unsafe_allow_html=True)
 st.markdown("""
 <p> 📃  Powered by the NLP model <strong>"all-MiniLM-L6-v2"</strong>, this app demonstrates chatbot-usecases of a fictional company.</p>
-<p> 💻  Replace conventional FAQs with AI chatBOT.</p[]>
+<p> 💻  Replace conventional FAQs with AI chatBOT.</p>
 """, unsafe_allow_html=True)
 
 # -------------------------------
 # 6. Session State Initialization
 # -------------------------------
-for key in ["chat_history", "prev_question", "followup_questions", "user_input", "chat_open"]:
+for key in ["chat_history", "followup_questions", "user_input", "chat_open"]:
     if key not in st.session_state:
         st.session_state[key] = [] if key == "chat_history" else None if key != "chat_open" else False
 
@@ -121,14 +121,12 @@ def handle_input():
                 if faq["question"] == follow_q:
                     st.session_state.chat_history.append(("You", "Yes"))
                     st.session_state.chat_history.append(("Bot", faq["answer"]))
-                    st.session_state.prev_question = follow_q
                     st.session_state.followup_questions = None
                     st.session_state.user_input = ""
                     return
         elif user_input.lower() in ["no", "n"]:
             st.session_state.chat_history.append(("You", "No"))
             st.session_state.chat_history.append(("Bot", "Okay, please rephrase your question."))
-            st.session_state.prev_question = None
             st.session_state.followup_questions = None
             st.session_state.user_input = ""
             return
@@ -136,10 +134,10 @@ def handle_input():
             # If user types anything else, treat as a new question
             pass
 
-    # ---------------- Normal retrieval ----------------
+    # ---------------- Normal retrieval (FIXED) ----------------
     st.session_state.chat_history.append(("You", user_input))
-    answer, followups = retrieve_answer(user_input, st.session_state.prev_question)
-    st.session_state.prev_question = user_input
+    # Remove prev_question parameter - use only current query
+    answer, followups = retrieve_answer(user_input)
     st.session_state.followup_questions = followups
     st.session_state.chat_history.append(("Bot", answer))
     st.session_state.user_input = ""
