@@ -2,6 +2,7 @@ faq_data = [
     {"question": "Product info.", "answer": "Hello! I'm here to help you with information about our products and services. Feel free to ask about anything you'd like to know about our company."},
     {"question": "Hi. Hello.", "answer": "Hello! Welcome to our company. I'm here to assist you with any questions about our products, services, or business. How can I help you today?"},
     {"question": "Hi. How are you?", "answer": "I'm doing great, thanks for asking! I'm ready to help you with information about our products and services. What would you like to know?"},
+    {"question": "How to order the product/item/items/goods?", "answer": "It's simple. Our various range of products are available on all major retail and online platforms like Amazon, Flipkart etc."},
     {"question": "Hi. How are you doing?", "answer": "I'm doing well and happy to assist you! Feel free to ask me anything about our company, products, or services."},
     {"question": "What are your business hours?", "answer": "Our office is open from 9:00 AM to 6:00 PM, Monday through Friday (Indian Standard Time). Our team is available during these hours for support."},
     {"question": "What are your office timings?", "answer": "We operate from 9:00 AM to 6:00 PM, Monday through Friday (Indian Standard Time). You can reach us for assistance during these hours."},
