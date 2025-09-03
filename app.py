@@ -79,11 +79,9 @@ def retrieve_answer(user_query, prev_question=None):
 # -------------------------------
 # 5. Main pseudo-company content
 # -------------------------------
-st.markdown("<h1>🏢🤖📃 Demo Chatbot</h1>", unsafe_allow_html=True)
+st.markdown("<h1>🤖 AI Chatbot</h1>", unsafe_allow_html=True)
 st.markdown("""
-<p>Welcome to the Demo Company website. This site is purely for demonstration purposes to showcase a chatbot implementation.</p>
-<h2>About Us</h2>
-<p>We are a fictional company specializing in innovative solutions and excellent customer service.</p>
+<p>Powered by LLM, this chatbot demnostrates chatbot usecases for a fictional company & products.</p>
 """, unsafe_allow_html=True)
 
 # -------------------------------
