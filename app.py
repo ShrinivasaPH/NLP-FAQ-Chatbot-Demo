@@ -21,6 +21,7 @@ st.set_page_config(
 faq_data = [
     {"question": "Product info.", "answer": "Hello. 😊 You can ask questions about our company and I'll try to help you my level best."},
     {"question": "Hi. Hello.", "answer": "Hello. 😊 You can ask questions about our company and I'll try to help you my level best."},
+    {"question": "Hi. How are you?", "answer": "Hello. 😊 I'm doing great & thanks for asking. You can ask any questions about our products or company & I'll try my best to answer."},
     {"question": "What are your business hours?", "answer": "Our office is open from 9 AM to 6 PM, Monday to Friday."},
     {"question": "What are your office timings?", "answer": "Our office is open from 9 AM to 6 PM, Monday to Friday."},
     {"question": "Where is your office located?", "answer": "Our office is located at 123 Main Street, Bangalore."},
@@ -72,7 +73,7 @@ def retrieve_answer(user_query, prev_question=None):
 # -------------------------------
 # 5. Main pseudo-company content
 # -------------------------------
-st.markdown("<h1>🏢 Demo Company Pvt Ltd</h1>", unsafe_allow_html=True)
+st.markdown("<h1>🏢🤖📃 Demo Chatbot</h1>", unsafe_allow_html=True)
 st.markdown("""
 <p>Welcome to the Demo Company website. This site is purely for demonstration purposes to showcase a chatbot implementation.</p>
 <h2>About Us</h2>
