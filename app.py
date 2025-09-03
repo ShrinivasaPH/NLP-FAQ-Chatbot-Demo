@@ -11,7 +11,7 @@ import time
 # -------------------------------
 st.set_page_config(
     page_title="AI ChatBot Demo",
-    page_icon="💻✨",
+    page_icon="💻",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
