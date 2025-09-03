@@ -10,8 +10,8 @@ import time
 # 1. Streamlit UI Setup
 # -------------------------------
 st.set_page_config(
-    page_title="Demo Company Site",
-    page_icon="🏢",
+    page_title="AI ChatBot Demo",
+    page_icon="💻",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
