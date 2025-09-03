@@ -79,9 +79,10 @@ def retrieve_answer(user_query, prev_question=None):
 # -------------------------------
 # 5. Main pseudo-company content
 # -------------------------------
-st.markdown("<h1>🤖 AI Chatbot</h1>", unsafe_allow_html=True)
+st.markdown("<h1>🤖 AI Chatbot Demo </h1>", unsafe_allow_html=True)
 st.markdown("""
-<p>Powered by LLM, this chatbot demnostrates chatbot usecases for a fictional company & products.</p>
+<p> 📃  Powered by the NLP model <strong>"all-MiniLM-L6-v2"</strong>, this app demonstrates chatbot-usecases of a fictional company.</p>
+<p> 💻  Replace conventional FAQs with AI chatBOT.</p[]>
 """, unsafe_allow_html=True)
 
 # -------------------------------
@@ -193,7 +194,7 @@ st.markdown("""
 chat_container = st.container()
 with chat_container:
     st.markdown('<div class="chat-container">', unsafe_allow_html=True)
-    st.markdown('<div class="chat-header">💬 Chat with Demo Bot</div>', unsafe_allow_html=True)
+    st.markdown('<div class="chat-header">💬 Chat here</div>', unsafe_allow_html=True)
     chat_body = st.empty()
     st.text_input("", key="user_input", placeholder="Type your question here...", on_change=handle_input)
     st.markdown('</div>', unsafe_allow_html=True)
